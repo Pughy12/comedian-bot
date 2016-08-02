@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "996034479678",
+    "firebase_url": "https://comedianbot-ab7f1.firebaseio.com",
+    "project_id": "comedianbot-ab7f1",
+    "storage_bucket": "comedianbot-ab7f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996034479678:android:ab75a8d014b6146f",
+        "android_client_info": {
+          "package_name": "com.pug.comedianbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996034479678-1tbr3ugekbf4l6n4s1qtu5d1tv3tvle4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCRNXyKgL7wZn0aYocUQiWFxHjvUpi5sM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
