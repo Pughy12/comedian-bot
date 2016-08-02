@@ -2,6 +2,7 @@ package com.pug.comedianbot.activity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -24,14 +25,14 @@ public class JokeDisplayerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final Button generateJokeButton = (Button) findViewById(R.id.generateJokeButton);
-        final TextView jokeSetup = (TextView) findViewById(R.id.jokeSetup);
-        final TextView jokePunchline = (TextView) findViewById(R.id.jokePunchline);
+        final Button generateJokeButton = (Button) findViewById(R.id.generate_joke_button);
+        final TextView jokeSetup = (TextView) findViewById(R.id.setup);
+        final TextView jokePunchline = (TextView) findViewById(R.id.punchline);
 
         generateJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Joke joke = JokeGenerator.getRandomOneLiner();
+                final Joke joke = JokeGenerator.getRandomJoke();
                 jokeSetup.setText(joke.getSetup());
                 jokePunchline.setText(joke.getPunchline());
             }
@@ -54,6 +55,8 @@ public class JokeDisplayerActivity extends AppCompatActivity {
                 mp.start();
             }
         });
+
+        MyFirebase firebase = new MyFirebase();
     }
 
     @Override

@@ -5,25 +5,29 @@ package com.pug.comedianbot.jokes;
  */
 public class Joke {
 
-    private int id;
-    private String jokeSetup;
-    private String jokePunchline;
+    @SuppressWarnings("unused")
+    private String setup;
+    @SuppressWarnings("unused")
+    private String punchline;
 
-    public Joke(int id, String jokeSetup, String jokePunchline) {
-        this.id = id;
-        this.jokeSetup = jokeSetup;
-        this.jokePunchline = jokePunchline;
-    }
-
-    public int getId() {
-        return id;
+    @SuppressWarnings("unused")
+    private Joke() {
+        // Default constructor required for calls to DataSnapshot.getValue(Joke.class)
     }
 
     public String getSetup() {
-        return jokeSetup;
+        return setup;
     }
 
     public String getPunchline() {
-        return jokePunchline;
+        return punchline;
+    }
+
+    @Override
+    public String toString() {
+        return "Joke{" +
+                "setup='" + setup + '\'' +
+                ", punchline='" + punchline + '\'' +
+                '}';
     }
 }

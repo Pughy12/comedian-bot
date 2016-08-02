@@ -10,35 +10,16 @@ import java.util.Random;
  */
 public class JokeGenerator {
 
-    /** A set of joke setups */
-    private static List<String> SETUPS = MyFirebase.getJokeSetups();
-
-    /** A set of joke punchlines */
-    private static List<String> PUNCHLINES = MyFirebase.getJokePunchlines();
-
-    /** A random randomiser */
-    private static final Random RANDOM = new Random();
+    private static final List<Joke> JOKES = MyFirebase.getJokesList();
 
     /**
      * Creates a joke using a setup and a punchline from the arrays above
      *
      * @return A Joke object with the necessary parts to tell a hilarious joke
      */
-    public static Joke getRandomOneLiner() {
-        final int randomInt = RANDOM.nextInt(PUNCHLINES.size());
-        return new Joke(SETUPS.get(randomInt), PUNCHLINES.get(randomInt));
-    }
-
-    /**
-     * Get a random number between the ranges provided
-     *
-     * @param min The lowest number of the range
-     * @param max The highest number in the range
-     *
-     * @return A random integer from the range
-     */
-    private static int randInt(int min, int max) {
-        return RANDOM.nextInt((max - min)) + min;
+    public static Joke getRandomJoke() {
+        final Random random = new Random();
+        return JOKES.get(random.nextInt(JOKES.size()));
     }
 
 }
