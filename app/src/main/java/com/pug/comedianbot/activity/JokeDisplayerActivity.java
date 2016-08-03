@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,8 @@ import com.pug.comedianbot.jokes.Joke;
 import com.pug.comedianbot.jokes.JokeGenerator;
 
 public class JokeDisplayerActivity extends AppCompatActivity {
+
+    private static final String TAG = "JOKE-DISPLAYER-ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +35,18 @@ public class JokeDisplayerActivity extends AppCompatActivity {
         generateJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Joke joke = JokeGenerator.getRandomJoke();
-                jokeSetup.setText(joke.getSetup());
-                jokePunchline.setText(joke.getPunchline());
+                Joke joke = null;
+
+                try {
+                    joke = JokeGenerator.getRandomJoke();
+                } catch (IllegalStateException e) {
+                    Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_SHORT).show();
+                }
+
+                if (joke != null) {
+                    jokeSetup.setText(joke.getSetup());
+                    jokePunchline.setText(joke.getPunchline());
+                }
             }
         });
 
@@ -55,8 +67,6 @@ public class JokeDisplayerActivity extends AppCompatActivity {
                 mp.start();
             }
         });
-
-        MyFirebase firebase = new MyFirebase();
     }
 
     @Override

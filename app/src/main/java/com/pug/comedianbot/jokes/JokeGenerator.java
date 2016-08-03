@@ -12,14 +12,19 @@ public class JokeGenerator {
 
     private static final List<Joke> JOKES = MyFirebase.getJokesList();
 
+    private static final Random RANDOM = new Random();
+
     /**
      * Creates a joke using a setup and a punchline from the arrays above
      *
      * @return A Joke object with the necessary parts to tell a hilarious joke
      */
-    public static Joke getRandomJoke() {
-        final Random random = new Random();
-        return JOKES.get(random.nextInt(JOKES.size()));
+    public static Joke getRandomJoke() throws IllegalStateException {
+
+        if (JOKES.size() < 1) {
+            throw new IllegalStateException("I don't know why but there are no jokes, try again cos it'll probably work");
+        }
+        return JOKES.get(RANDOM.nextInt(JOKES.size()));
     }
 
 }
